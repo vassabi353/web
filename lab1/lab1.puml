@@ -1,1 +1,37 @@
+@startuml lab1
+skinparam classAttributeIconSize 0
+
+package "MyProject.Classes" {
+
+  abstract class AbstractUser {
+    {abstract} +showInfo(): void
+  }
+
+  interface SuperUserInterface {
+    +getInfo(): array
+  }
+
+  class User {
+    +name: string
+    +login: string
+    #password: string
+    {static} +count: int
+    +__construct(name: string, login: string, password: string)
+    +__destruct()
+    +showInfo(): void
+  }
+
+  class SuperUser {
+    +role: string
+    {static} +count: int
+    +__construct(name: string, login: string, password: string, role: string)
+    +showInfo(): void
+    +getInfo(): array
+  }
+
+  AbstractUser <|-- User
+  User <|-- SuperUser
+  SuperUserInterface <|.. SuperUser
+}
+@enduml
 
